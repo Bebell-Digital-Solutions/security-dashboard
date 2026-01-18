@@ -100,6 +100,7 @@
 
         
        <!-- Overview Section -->
+<!-- Overview Section -->
 <section id="overview" class="dashboard-section">
     <div class="card">
         <h2 class="text-3xl font-bold mb-4">Overview</h2>
@@ -115,13 +116,17 @@
                      alt="Video thumbnail" 
                      class="absolute inset-0 w-full h-full object-cover">
                 
-                <!-- Play Button with White Background -->
-                <div class="relative z-20">
-                    <div class="bg-white rounded-full p-0 hover:scale-110 transition-all duration-300 shadow-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="#ff5011">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                        </svg>
+                <!-- Play Button with White Background ONLY Behind the Triangle -->
+                <div class="relative z-20 hover:scale-110 transition-all duration-300">
+                    <!-- White circle positioned behind just the play triangle -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="bg-white h-10 w-10 rounded-full"></div>
                     </div>
+                    
+                    <!-- Play Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 relative z-10" viewBox="0 0 20 20" fill="#ff5011">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                    </svg>
                 </div>
                 
                 <!-- Optional: Video title overlay -->
@@ -138,7 +143,6 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-
         
 
         
