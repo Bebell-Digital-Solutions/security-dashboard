@@ -34,6 +34,29 @@
             --scroll-thumb-color: var(--skin-color); /* Using skin-color for scrollbar thumb */
         }
 
+
+/* Add this at the very top of styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+
+html {
+scroll-behavior: smooth;
+}
+
+
         /* --- Base Styles --- */
         body {
             font-family: var(--body-font);
