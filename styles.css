@@ -52,7 +52,7 @@
 
         /* --- Layout --- */
         .sidebar {
-            width: 280px; /* Fixed width */
+            width: 290px; /* Fixed width */
             flex-shrink: 0;
             background-color: var(--bg-card);
             border-right: 1px solid var(--border);
@@ -76,7 +76,7 @@
         }
 
         .main-content {
-            margin-left: 280px; /* Offset for fixed sidebar */
+            margin-left: 290px; /* Offset for fixed sidebar */
             flex-grow: 1;
             overflow-y: auto; /* Scrollable main content */
             height: 100vh;
