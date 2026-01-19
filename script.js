@@ -90,11 +90,11 @@
                     newIcon.className = 'w-3 h-3 text-primary lock-icon';
 
                     if (percentage >= 100) {
-                        newIcon.setAttribute('data-lucide', 'lock-keyhole-open');
+                        newIcon.setAttribute('data-lucide', 'lock');
                         lockWrapper.style.cursor = 'pointer';
                         lockWrapper.title = "Click for celebration!";
                     } else {
-                        newIcon.setAttribute('data-lucide', 'lock');
+                        newIcon.setAttribute('data-lucide', 'lock-open');
                         lockWrapper.style.cursor = 'default';
                         lockWrapper.title = "Complete all sections to unlock";
                     }
