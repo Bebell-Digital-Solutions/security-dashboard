@@ -357,30 +357,10 @@ function setupCarousel() {
         const slides = track ? Array.from(track.children) : [];
         const nextButton = container.querySelector('.next-button');
         const prevButton = container.querySelector('.prev-button');
-        const dotsContainer = container.querySelector('.carousel-dots');
         
         if (!track || slides.length === 0) return;
         
         let currentIndex = 0;
-        let autoPlayInterval;
-        let isAutoPlaying = false;
-        
-        // Initialize dots
-        if (dotsContainer) {
-            slides.forEach((_, index) => {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot';
-                dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-            updateDots();
-        }
-        
-        // Initialize Lucide icons for buttons
-        if (nextButton && prevButton) {
-            lucide.createIcons();
-        }
         
         const getSlideWidth = () => {
             return slides[0].getBoundingClientRect().width;
@@ -393,47 +373,16 @@ function setupCarousel() {
             const slideWidth = getSlideWidth();
             track.style.transform = `translateX(-${slideWidth * index}px)`;
             currentIndex = index;
-            
-            if (dotsContainer) updateDots();
-            resetAutoPlay();
         };
         
-        const goToSlide = (index) => {
-            if (index === currentIndex) return;
-            moveToSlide(index);
-        };
+        // Initialize first slide position
+        moveToSlide(0);
         
-        const updateDots = () => {
-            if (!dotsContainer) return;
-            const dots = dotsContainer.querySelectorAll('.carousel-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        };
-        
-        // Auto-play functionality
-        const startAutoPlay = () => {
-            if (isAutoPlaying) return;
-            isAutoPlaying = true;
-            autoPlayInterval = setInterval(() => {
-                moveToSlide(currentIndex + 1);
-            }, 5000); // Change slide every 5 seconds
-        };
-        
-        const stopAutoPlay = () => {
-            isAutoPlaying = false;
-            clearInterval(autoPlayInterval);
-        };
-        
-        const resetAutoPlay = () => {
-            stopAutoPlay();
-            startAutoPlay();
-        };
-        
-        // Event listeners
+        // Event listeners for buttons
         if (prevButton) {
             prevButton.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 moveToSlide(currentIndex - 1);
             });
         }
@@ -441,6 +390,7 @@ function setupCarousel() {
         if (nextButton) {
             nextButton.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 moveToSlide(currentIndex + 1);
             });
         }
@@ -451,7 +401,6 @@ function setupCarousel() {
         
         track.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
-            stopAutoPlay();
         }, { passive: true });
         
         track.addEventListener('touchmove', (e) => {
@@ -459,7 +408,7 @@ function setupCarousel() {
         }, { passive: true });
         
         track.addEventListener('touchend', () => {
-            const threshold = 50; // Minimum swipe distance
+            const threshold = 50;
             const diff = startX - endX;
             
             if (Math.abs(diff) > threshold) {
@@ -471,7 +420,6 @@ function setupCarousel() {
                     moveToSlide(currentIndex - 1);
                 }
             }
-            resetAutoPlay();
         });
         
         // Keyboard navigation
@@ -482,18 +430,11 @@ function setupCarousel() {
             } else if (e.key === 'ArrowRight') {
                 e.preventDefault();
                 moveToSlide(currentIndex + 1);
-            } else if (e.key === 'Home') {
-                e.preventDefault();
-                moveToSlide(0);
-            } else if (e.key === 'End') {
-                e.preventDefault();
-                moveToSlide(slides.length - 1);
             }
         });
         
-        // Pause auto-play on hover
-        container.addEventListener('mouseenter', stopAutoPlay);
-        container.addEventListener('mouseleave', startAutoPlay);
+        // Make carousel focusable for keyboard navigation
+        container.setAttribute('tabindex', '0');
         
         // Handle window resize
         let resizeTimeout;
@@ -508,13 +449,10 @@ function setupCarousel() {
                 }, 50);
             }, 100);
         });
-        
-        // Start auto-play
-        startAutoPlay();
     });
 }
 
-// Update your main initialization function to include carousel setup
+// Also update your DOMContentLoaded event listener to load Font Awesome for icons
 document.addEventListener('DOMContentLoaded', () => {
     initLoader();
     lucide.createIcons();
@@ -523,9 +461,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
     setupVideoPlayer();
     setupBackToTopButton();
-    setupCarousel(); // Add this line
+    setupCarousel();
+    
+    // Load Font Awesome for carousel icons if not already loaded
+    if (!document.querySelector('link[href*="font-awesome"]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+        document.head.appendChild(link);
+    }
 });
-
 
 
 
