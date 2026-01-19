@@ -92,11 +92,11 @@
                     if (percentage >= 100) {
                         newIcon.setAttribute('data-lucide', 'lock');
                         lockWrapper.style.cursor = 'pointer';
-                        lockWrapper.title = "Click for celebration!";
+                        lockWrapper.title = "You are now Secured! Click for celebration! 🎉";
                     } else {
                         newIcon.setAttribute('data-lucide', 'lock-open');
                         lockWrapper.style.cursor = 'default';
-                        lockWrapper.title = "Complete all sections to unlock";
+                        lockWrapper.title = "Complete all sections to put a lock on your account.";
                     }
                     lockWrapper.appendChild(newIcon);
                     if (typeof lucide !== 'undefined') lucide.createIcons();
