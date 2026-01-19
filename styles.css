@@ -383,40 +383,61 @@ scroll-behavior: smooth;
 
 
 
-/* Progress bar container - this is the empty line */
+/* --- Progress Bar with Lock Icons --- */
+.progress-wrapper {
+    position: relative;
+    width: 100%;
+    height: 2rem;
+    margin-top: 1rem;
+}
+
+/* Reset the existing .progress-container to just be the bar */
 .progress-container {
     position: relative;
-    height: 1rem;
-    background-color: var(--bg-secondary);
-    border-radius: 9999px;
+    width: 100%;
+    height: 12px;
+    background-color: var(--bg-input);
+    border-radius: var(--border-radius-sm);
     overflow: hidden;
-    padding: 0 0.75rem; /* Add padding for lock icons */
+    margin-top: 0;
 }
 
 /* Progress bar fill */
 .progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary) 0%, #ff7b4d 100%);
-    border-radius: 9999px;
     width: 0%;
+    background: linear-gradient(90deg, var(--primary) 0%, #ff7b4d 100%);
+    border-radius: var(--border-radius-sm);
     transition: width 0.5s ease-in-out;
-    position: relative;
-    z-index: 1;
 }
 
-/* Ensure the progress bar doesn't cover the lock icons */
-.progress-bar::before {
-    content: '';
+/* Lock icons positioning and styling */
+.open-lock-icon,
+.closed-lock-icon {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    border-radius: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 50;
 }
 
+.open-lock-icon:hover,
+.closed-lock-icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 80, 17, 0.3);
+}
 
+/* If using the first HTML option with pt-6 */
+.pt-6 {
+    padding-top: 1.5rem;
+}
+
+/* If using the second HTML option with wrapper */
+.progress-wrapper .progress-container {
+    position: relative;
+    top: 0.5rem; /* Adjust to align with icons */
+}
 
 
 
