@@ -300,7 +300,7 @@ scroll-behavior: smooth;
         #back-to-top {
             position: fixed; 
             bottom: 80px; 
-            right: 30px;
+            right: 20px;
             width: 40px; 
             height: 40px;
             background: url('https://bucket.mlcdn.com/a/3336/3336910/images/972c5065cffe83955d5322557dcdce28eca170e5.png') no-repeat center center;
