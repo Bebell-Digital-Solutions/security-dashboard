@@ -85,18 +85,33 @@
 
     <!-- Right Column: Scrollable Content -->
     <main class="main-content">
-        <!-- MAIN HEADER (Progress Bar Location) -->
-        <header class="main-header">
-            <div class="flex justify-between items-center mb-2">
-                <h3 class="text-lg font-semibold text-text-main m-0">Your Progress</h3>
-                <p class="text-sm text-text-muted m-0" id="progressText">0% Complete (0/8 Sections)</p>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-        </header>
         
+        
+        
+        <!-- MAIN HEADER (Progress Bar Location) -->
 
+        
+<!-- MAIN HEADER (Progress Bar Location) -->
+<header class="main-header">
+    <div class="flex justify-between items-center mb-2">
+        <h3 class="text-lg font-semibold text-text-main m-0">Your Progress</h3>
+        <p class="text-sm text-text-muted m-0" id="progressText">0% Complete (0/8 Sections)</p>
+    </div>
+    <div class="progress-container relative">
+        <!-- Open Lock Icon at Start -->
+        <div class="absolute left-0 -top-1 z-10 flex items-center justify-center w-6 h-6 bg-white rounded-full border-2 border-primary shadow-sm">
+            <i data-lucide="lock-open" class="w-3 h-3 text-primary"></i>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar"></div>
+        
+        <!-- Closed Lock Icon at End -->
+        <div class="absolute right-0 -top-1 z-10 flex items-center justify-center w-6 h-6 bg-white rounded-full border-2 border-primary shadow-sm">
+            <i data-lucide="lock" class="w-3 h-3 text-primary"></i>
+        </div>
+    </div>
+</header>
 
         
        <!-- Overview Section -->
