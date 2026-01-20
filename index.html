@@ -10,9 +10,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    
     <!-- Favicon -->
     <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/bb6d550f9b7a6643eff984e7eb1c932ff997f664.png">
-    
     <!-- External CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -202,6 +204,38 @@
                         <label for="overview-action3" class="text-text-muted cursor-not-allowed">Familiarize yourself with the navigation on the left.</label>
                     </li>
                 </ul>
+
+
+        
+
+<!-- Ensure Phosphor Icons are loaded in your <head> if not already -->
+<!-- <script src="https://unpkg.com/@phosphor-icons/web"></script> -->
+
+<button id="openToolBtn" class="btn-primary-tool">
+    <i class="ph ph-shield-check"></i> Check Password Strength
+</button>
+
+<!-- ======================================================= -->
+<!-- COPY PASTE THIS HTML AT THE BOTTOM OF YOUR BODY -->
+<!-- ======================================================= -->
+
+<div id="toolModal" class="modal-overlay">
+    <div class="modal-content">
+        <button id="closeModalBtn" class="modal-close-btn">
+            <i class="ph ph-x"></i>
+        </button>
+        <div class="modal-iframe-wrapper">
+            <!-- Loading lazy so it doesn't slow down homepage load -->
+            <iframe id="toolIframe" data-src="/tools/pass-strength-shield" title="Password Strength Shield"></iframe>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+        
 
                 <h3 class="text-xl font-semibold text-text-main mt-6 mb-3">Clear stopping point</h3>
                 <p class="mb-4">You have successfully reviewed the dashboard's purpose and structure. Proceed to the next section to begin taking action.</p>
