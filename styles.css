@@ -658,7 +658,7 @@ scroll-behavior: smooth;
 
         /* --- BACKGROUND IMAGE CONFIGURATION --- */
         /* The linear-gradient creates a dark overlay so text remains readable */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('path/to/your/image.jpg'); 
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://bucket.mlcdn.com/a/3336/3336910/images/24572133a0fc30e9d6a9887e17c33f065fe7b8d4.png'); 
         background-size: cover;      /* Ensures image covers the whole area */
         background-position: center; /* Centers the image */
         background-repeat: no-repeat;
