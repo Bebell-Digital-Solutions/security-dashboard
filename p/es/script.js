@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const carouselTrack = document.getElementById('carouselTrack');
     const prevButton = document.getElementById('prevButton');
     const nextButton = document.getElementById('nextButton');
-    const printGuideBtn = document.getElementById('printGuideBtn');
     
     let currentSlide = 0;
     const totalSlides = carouselSlides.length;
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             slideElement.dataset.index = index;
             
             slideElement.innerHTML = `
-                <img src="${slide.image}" alt="${slide.title}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\" viewBox=\"0 0 400 300\"></svg>'">
+                <img src="${slide.image}" alt="${slide.title}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\" viewBox=\"0 0 400 300\"></svg>
             `;
             
             carouselTrack.appendChild(slideElement);
@@ -95,10 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize carousel
     initCarousel();
     
-    // Print Guide Button
-    printGuideBtn.addEventListener('click', function() {
-        window.print();
-    });
+
     
     // Image error handling for step images
     const images = document.querySelectorAll('img');
@@ -113,40 +109,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Resize handler for carousel
     window.addEventListener('resize', updateCarousel);
     
-    // Add step counter for printing
-    const stepContainers = document.querySelectorAll('.step-container');
-    stepContainers.forEach((container, index) => {
-        const stepNumber = container.querySelector('.step-number');
-        if (stepNumber) {
-            stepNumber.textContent = index + 1;
-        }
+
+
     });
+
+
+
+
+
+
+
+
     
-    // Create Back-to-Top Button Dynamically
-    const backToTop = document.createElement("div");
-    backToTop.id = "back-to-top";
+
+
+
+
+
+
+
+
+
     
-    const backToTopImg = document.createElement("img");
-    backToTopImg.src = "https://bucket.mlcdn.com/a/3336/3336910/images/972c5065cffe83955d5322557dcdce28eca170e5.png";
-    backToTopImg.alt = "Back to top";
     
-    backToTop.appendChild(backToTopImg);
-    document.body.appendChild(backToTop);
-    
-    // Scroll Event Listener for Back-to-Top
-    window.addEventListener("scroll", function () {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            backToTop.style.display = "block";
-        } else {
-            backToTop.style.display = "none";
-        }
-    });
-    
-    // Click Event for Scrolling to Top
-    backToTop.addEventListener("click", function () {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
-});
