@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
+    });
 
 
 
