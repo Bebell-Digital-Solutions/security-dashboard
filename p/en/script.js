@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             slideElement.dataset.index = index;
             
             slideElement.innerHTML = `
-                <img src="${slide.image}" alt="${slide.title}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\" viewBox=\"0 0 400 300\"></svg>'">
+                <img src="${slide.image}" alt="${slide.title}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\" viewBox=\"0 0 400 300\"></svg>
             `;
             
             carouselTrack.appendChild(slideElement);
