@@ -277,6 +277,8 @@
     position: relative;
     margin-bottom: 30px;
     border-radius: 12px;
+    overflow: hidden; /* This ensures the gradient border stays within the rounded corners */
+       
 }
 
 .banner-link {
@@ -295,29 +297,35 @@
     object-fit: cover;
 }
 
+
 .banner-link::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, var(--primary), transparent 40%, transparent 60%, var(--primary));
-    border-radius: 14px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
     opacity: 0;
-    transition: opacity var(--transition);
-    z-index: -1;
+    transition: var(--transition);
+    z-index: 10; /* Ensures the gradient appears above the image */
 }
 
 .banner-link:hover::before {
-    opacity: 0.5;
+    opacity: 1;
 }
+
+
 
 .banner-link:hover img {
     border-color: var(--primary);
 }
 
 
-
+/* Optional: Add a subtle glow effect on hover */
+.banner-link:hover img {
+    filter: brightness(1.05);
+    transition: filter var(--transition);
+}
 
 
