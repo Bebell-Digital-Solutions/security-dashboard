@@ -1158,6 +1158,8 @@ input[type="checkbox"]:disabled:checked::after { color: #111; }
             bindCheckboxes();
             updateGlobalProgress();
             initVideoThumbnails(); // Initialize video thumbnails for default content
+            initCarousels(); // <-- ADD THIS LINE
+
 
             // Map Data-Section Navigation Events
             const navItems = document.querySelectorAll('.nav-item');
@@ -1325,44 +1327,74 @@ input[type="checkbox"]:disabled:checked::after { color: #111; }
             });
         }
 
-        // ==========================================
-        // DYNAMIC COMPONENTS (Carousels & Video Thumbnails for loaded content)
-        // ==========================================
-        function initDynamicComponents() {
-            // Initialize carousels
-            document.querySelectorAll('.carousel-container').forEach(container => {
-                const track = container.querySelector('.carousel-track');
-                const slides = track ? track.children : [];
-                const prevBtn = container.querySelector('.prev-button');
-                const nextBtn = container.querySelector('.next-button');
-                
-                if (!track || slides.length === 0) return;
-                
-                let currentIndex = 0;
-                const slideWidth = 100;
-                
-                function updateCarousel() {
-                    track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-                }
-                
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', () => {
-                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-                        updateCarousel();
-                    });
-                }
-                
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', () => {
-                        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-                        updateCarousel();
-                    });
-                }
-            });
-            
-            // Initialize video thumbnails in dynamically loaded content
-            initVideoThumbnails();
+
+
+
+
+        
+
+
+// ==========================================
+// DYNAMIC COMPONENTS (Carousels & Video Thumbnails for loaded content)
+// ==========================================
+function initDynamicComponents() {
+    // Initialize carousels
+    initCarousels();
+    
+    // Initialize video thumbnails in dynamically loaded content
+    initVideoThumbnails();
+}
+
+// Separate carousel initialization function
+function initCarousels() {
+    document.querySelectorAll('.carousel-container').forEach(container => {
+        const track = container.querySelector('.carousel-track');
+        const slides = track ? track.children : [];
+        const prevBtn = container.querySelector('.prev-button');
+        const nextBtn = container.querySelector('.next-button');
+        
+        if (!track || slides.length === 0) return;
+        
+        let currentIndex = 0;
+        const slideWidth = 100;
+        
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
         }
+        
+        // Remove existing listeners by cloning and replacing buttons
+        if (prevBtn) {
+            const newPrevBtn = prevBtn.cloneNode(true);
+            prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+            newPrevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+                updateCarousel();
+            });
+        }
+        
+        if (nextBtn) {
+            const newNextBtn = nextBtn.cloneNode(true);
+            nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+            newNextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+        }
+        
+        // Initialize first slide
+        updateCarousel();
+    });
+}
+
+
+
+
+
+        
 
         // ==========================================
         // MOBILE SIDEBAR
