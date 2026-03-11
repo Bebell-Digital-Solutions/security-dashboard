@@ -1131,7 +1131,7 @@ input[type="checkbox"]:disabled:checked::after { color: #111; }
 
 
         
-      <!-- App Logic Scripts -->
+        <!-- App Logic Scripts -->
     <script>
         // ==========================================
         // CONFIGURATION
@@ -1243,16 +1243,196 @@ input[type="checkbox"]:disabled:checked::after { color: #111; }
             }
             
             animateConfetti();
+        }
+
+        // ==========================================
+        // SUCCESS MODAL FUNCTION
+        // ==========================================
+        function showSuccessModal() {
+            // Create modal overlay
+            const modalOverlay = document.createElement('div');
+            modalOverlay.id = 'success-modal-overlay';
+            modalOverlay.style.position = 'fixed';
+            modalOverlay.style.top = '0';
+            modalOverlay.style.left = '0';
+            modalOverlay.style.width = '100%';
+            modalOverlay.style.height = '100%';
+            modalOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
+            modalOverlay.style.backdropFilter = 'blur(8px)';
+            modalOverlay.style.display = 'flex';
+            modalOverlay.style.alignItems = 'center';
+            modalOverlay.style.justifyContent = 'center';
+            modalOverlay.style.zIndex = '10000';
+            modalOverlay.style.opacity = '0';
+            modalOverlay.style.transition = 'opacity 0.3s ease';
             
-            // Also try to use canvas-confetti library if available (lighter weight)
-            if (typeof confetti !== 'undefined') {
-                confetti({
-                    particleCount: 100,
-                    spread: 70,
-                    origin: { y: 0.6 },
-                    colors: ['#ff5011', '#ff7a33', '#51cf66', '#ffd43b']
-                });
-            }
+            // Create modal content
+            const modalContent = document.createElement('div');
+            modalContent.style.background = 'var(--bg-card)';
+            modalContent.style.width = '90%';
+            modalContent.style.maxWidth = '450px';
+            modalContent.style.border = '2px solid var(--primary)';
+            modalContent.style.borderRadius = '20px';
+            modalContent.style.position = 'relative';
+            modalContent.style.boxShadow = '0 0 50px rgba(255, 80, 17, 0.5)';
+            modalContent.style.overflow = 'hidden';
+            modalContent.style.animation = 'modalPopIn 0.4s ease-out';
+            modalContent.style.padding = '2.5rem 2rem';
+            modalContent.style.textAlign = 'center';
+            
+            // Add animation keyframes
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes modalPopIn {
+                    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+                    100% { opacity: 1; transform: scale(1) translateY(0); }
+                }
+                @keyframes fadeInOut {
+                    0% { opacity: 0; transform: translate(-50%, -30%); }
+                    20% { opacity: 1; transform: translate(-50%, -50%); }
+                    80% { opacity: 1; transform: translate(-50%, -50%); }
+                    100% { opacity: 0; transform: translate(-50%, -70%); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Logo image (70x70)
+            const logo = document.createElement('img');
+            logo.src = 'https://bucket.mlcdn.com/a/3336/3336910/images/d4281bdac0392a0f63d74a3f70de1e30c5f42bae.png';
+            logo.alt = 'Sentinel Logo';
+            logo.style.width = '70px';
+            logo.style.height = '70px';
+            logo.style.objectFit = 'contain';
+            logo.style.marginBottom = '1.5rem';
+            logo.style.filter = 'drop-shadow(0 0 15px var(--primary))';
+            logo.style.animation = 'pulse 2s infinite';
+            
+            // Add pulse animation
+            const pulseStyle = document.createElement('style');
+            pulseStyle.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); filter: drop-shadow(0 0 15px var(--primary)); }
+                    50% { transform: scale(1.05); filter: drop-shadow(0 0 30px var(--primary)); }
+                    100% { transform: scale(1); filter: drop-shadow(0 0 15px var(--primary)); }
+                }
+            `;
+            document.head.appendChild(pulseStyle);
+            
+            // Congratulations heading
+            const heading = document.createElement('h2');
+            heading.style.fontFamily = 'var(--font-tech)';
+            heading.style.fontSize = '2.2rem';
+            heading.style.background = 'var(--gradient-1)';
+            heading.style.webkitBackgroundClip = 'text';
+            heading.style.webkitTextFillColor = 'transparent';
+            heading.style.backgroundClip = 'text';
+            heading.style.marginBottom = '1rem';
+            heading.style.fontWeight = '800';
+            heading.style.letterSpacing = '1px';
+            heading.innerHTML = 'CONGRATULATIONS!';
+            
+            // Success message
+            const message = document.createElement('p');
+            message.style.fontFamily = 'var(--font-code)';
+            message.style.color = 'var(--text-main)';
+            message.style.fontSize = '1.2rem';
+            message.style.marginBottom = '2rem';
+            message.style.lineHeight = '1.6';
+            message.innerHTML = 'You have achieved<br><span style="color: var(--primary); font-size: 2rem; font-weight: 800;">100% SECURITY</span>';
+            
+            // Stats container
+            const statsContainer = document.createElement('div');
+            statsContainer.style.background = 'rgba(255, 80, 17, 0.1)';
+            statsContainer.style.border = '1px solid var(--border)';
+            statsContainer.style.borderRadius = '12px';
+            statsContainer.style.padding = '1rem';
+            statsContainer.style.marginBottom = '2rem';
+            statsContainer.style.display = 'flex';
+            statsContainer.style.justifyContent = 'space-around';
+            statsContainer.style.gap = '1rem';
+            
+            // Tasks completed stat
+            const tasksStat = document.createElement('div');
+            tasksStat.style.textAlign = 'center';
+            tasksStat.innerHTML = `
+                <div style="font-family: var(--font-code); color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.3rem;">TASKS COMPLETED</div>
+                <div style="font-family: var(--font-tech); color: var(--primary); font-size: 1.8rem; font-weight: 700;">${TOTAL_PROTOCOL_TASKS}</div>
+            `;
+            
+            // Achievement badge
+            const badgeStat = document.createElement('div');
+            badgeStat.style.textAlign = 'center';
+            badgeStat.innerHTML = `
+                <div style="font-family: var(--font-code); color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.3rem;">ACHIEVEMENT</div>
+                <div style="font-family: var(--font-tech); color: var(--success); font-size: 1.8rem; font-weight: 700;">🏆</div>
+            `;
+            
+            statsContainer.appendChild(tasksStat);
+            statsContainer.appendChild(badgeStat);
+            
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.style.background = 'var(--gradient-1)';
+            closeBtn.style.border = 'none';
+            closeBtn.style.color = 'var(--bg-dark)';
+            closeBtn.style.fontFamily = 'var(--font-code)';
+            closeBtn.style.fontSize = '1.1rem';
+            closeBtn.style.fontWeight = '700';
+            closeBtn.style.padding = '1rem 2rem';
+            closeBtn.style.borderRadius = '12px';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.width = '100%';
+            closeBtn.style.textTransform = 'uppercase';
+            closeBtn.style.letterSpacing = '1px';
+            closeBtn.style.transition = 'all 0.3s ease';
+            closeBtn.style.border = '1px solid transparent';
+            closeBtn.innerHTML = '🎉 CELEBRATE! 🎉';
+            
+            // Hover effect
+            closeBtn.addEventListener('mouseenter', () => {
+                closeBtn.style.boxShadow = '0 0 30px var(--primary)';
+                closeBtn.style.transform = 'scale(1.02)';
+                closeBtn.style.color = 'white';
+            });
+            
+            closeBtn.addEventListener('mouseleave', () => {
+                closeBtn.style.boxShadow = 'none';
+                closeBtn.style.transform = 'scale(1)';
+                closeBtn.style.color = 'var(--bg-dark)';
+            });
+            
+            closeBtn.addEventListener('click', () => {
+                modalOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(modalOverlay);
+                }, 300);
+            });
+            
+            // Assemble modal
+            modalContent.appendChild(logo);
+            modalContent.appendChild(heading);
+            modalContent.appendChild(message);
+            modalContent.appendChild(statsContainer);
+            modalContent.appendChild(closeBtn);
+            modalOverlay.appendChild(modalContent);
+            document.body.appendChild(modalOverlay);
+            
+            // Fade in
+            setTimeout(() => {
+                modalOverlay.style.opacity = '1';
+            }, 10);
+            
+            // Auto-close after 8 seconds (optional)
+            setTimeout(() => {
+                if (modalOverlay.parentNode) {
+                    modalOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        if (modalOverlay.parentNode) {
+                            document.body.removeChild(modalOverlay);
+                        }
+                    }, 300);
+                }
+            }, 8000);
         }
 
         // ==========================================
@@ -1337,6 +1517,7 @@ input[type="checkbox"]:disabled:checked::after { color: #111; }
         }
 
         let confettiFired = false; // Track if confetti has been fired for current 100% achievement
+        let modalShown = false; // Track if modal has been shown for current 100% achievement
         
         function updateGlobalProgress() {
             const mainProgressBar = document.getElementById('mainProgressBar');
@@ -1358,61 +1539,26 @@ input[type="checkbox"]:disabled:checked::after { color: #111; }
             mainProgressBar.style.width = percentage + '%';
             progressText.innerText = `${Math.floor(percentage)}% Secure`;
 
-            // Check if we just reached 100% and confetti hasn't been fired yet
-            if (percentage >= 100 && !confettiFired) {
-                confettiFired = true;
-                launchConfetti();
-                
-                // Add a little celebration message
-                const toast = document.createElement('div');
-                toast.style.position = 'fixed';
-                toast.style.top = '50%';
-                toast.style.left = '50%';
-                toast.style.transform = 'translate(-50%, -50%)';
-                toast.style.background = 'linear-gradient(135deg, var(--primary) 0%, #ff7a33 100%)';
-                toast.style.color = 'white';
-                toast.style.padding = '20px 40px';
-                toast.style.borderRadius = '50px';
-                toast.style.fontFamily = 'var(--font-tech)';
-                toast.style.fontSize = '2rem';
-                toast.style.fontWeight = 'bold';
-                toast.style.zIndex = '10001';
-                toast.style.boxShadow = '0 0 50px rgba(255, 80, 17, 0.8)';
-                toast.style.border = '2px solid white';
-                toast.style.textAlign = 'center';
-                toast.style.animation = 'fadeInOut 3s ease forwards';
-                toast.innerHTML = '🎉 COMPLETE! 🎉<br><span style="font-size: 1rem;">100% Secure</span>';
-                
-                // Add animation style
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes fadeInOut {
-                        0% { opacity: 0; transform: translate(-50%, -30%); }
-                        20% { opacity: 1; transform: translate(-50%, -50%); }
-                        80% { opacity: 1; transform: translate(-50%, -50%); }
-                        100% { opacity: 0; transform: translate(-50%, -70%); }
-                    }
-                `;
-                document.head.appendChild(style);
-                
-                document.body.appendChild(toast);
-                
-                // Remove toast after animation
-                setTimeout(() => {
-                    if (toast.parentNode) {
-                        document.body.removeChild(toast);
-                    }
-                }, 3000);
-            } else if (percentage < 100) {
-                confettiFired = false; // Reset if progress drops below 100%
-            }
-
+            // Check if we just reached 100% and celebrations haven't fired yet
             if (percentage >= 100) {
+                if (!confettiFired) {
+                    confettiFired = true;
+                    launchConfetti();
+                }
+                
+                if (!modalShown) {
+                    modalShown = true;
+                    showSuccessModal();
+                }
+                
                 lockIcon.setAttribute('data-lucide', 'shield-check');
                 lockIcon.classList.remove('text-gray-500');
                 lockIcon.classList.add('text-[var(--success)]');
                 lockEnd.classList.add('border-[var(--success)]', 'shadow-[0_0_15px_var(--success)]');
             } else {
+                confettiFired = false; // Reset if progress drops below 100%
+                modalShown = false; // Reset if progress drops below 100%
+                
                 lockIcon.setAttribute('data-lucide', 'lock');
                 lockIcon.classList.remove('text-[var(--success)]');
                 lockIcon.classList.add('text-gray-500');
@@ -1672,6 +1818,7 @@ input[type="checkbox"]:disabled:checked::after { color: #111; }
             }
         });
     </script>
+
     
     
     
