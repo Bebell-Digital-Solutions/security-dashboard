@@ -486,6 +486,25 @@ input[type="checkbox"]:disabled:checked::after { color: #111; }
 /* =========================================
    CAROUSEL
    ========================================= */
+
+ /* Carousel overrides */
+        .carousel-container { position: relative; overflow: hidden; border-radius: 12px; border: 1px solid rgba(255,80,17,0.2); }
+        .carousel-track { display: flex; transition: transform 0.4s ease; }
+        .carousel-slide { min-width: 100%; display: flex; justify-content: center; background: #000; padding: 1rem; }
+        .carousel-slide img { max-height: 400px; border-radius: 8px; border: 1px solid rgba(255,80,17,0.2); object-fit: contain; }
+        .carousel-button {
+            position: absolute; top: 50%; transform: translateY(-50%); background: var(--bg-dark); color: var(--primary);
+            border: 1px solid var(--primary); width: 40px; height: 40px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;
+        }
+        .carousel-button:hover { background: var(--primary); color: var(--bg-dark); box-shadow: var(--shadow-glow); }
+        .prev-button { left: 10px; } .next-button { right: 10px; }
+
+
+
+
+
+        
 .carousel-section {
     margin: 2rem 0;
 }
