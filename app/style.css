@@ -245,3 +245,59 @@
             .nav-list { display: flex; overflow-x: auto; gap: 1rem; padding-bottom: 0.5rem; }
             .nav-item { white-space: nowrap; margin-bottom: 0; }
         }
+
+
+
+
+
+
+/* Banner container with gradient border hover effect */
+.banner-container {
+    position: relative;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    overflow: hidden; /* This ensures the gradient border stays within the rounded corners */
+}
+
+.banner-link {
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+
+.banner-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 10; /* Ensures the gradient appears above the image */
+}
+
+.banner-link:hover::before {
+    opacity: 1;
+}
+
+/* Optional: Add a subtle glow effect on hover */
+.banner-link:hover img {
+    filter: brightness(1.05);
+    transition: filter var(--transition);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
