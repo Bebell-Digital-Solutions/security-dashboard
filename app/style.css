@@ -272,21 +272,32 @@
 
 
 
-/* Animated border on hover */
+
+
+
+
+
+
+
+
+
+/* Banner container with gradient border hover effect */
 .banner-container {
     position: relative;
     margin-bottom: 30px;
     border-radius: 12px;
     overflow: hidden; /* This ensures the gradient border stays within the rounded corners */
-    margin: 0 2rem;   
+margin: 0 2rem;   
 }
 
 .banner-link {
     display: block;
     position: relative;
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 12px;       
 }
+
+
 
 .banner-link img {
     border-radius: 12px;
@@ -315,17 +326,16 @@
     opacity: 1;
 }
 
-
-
-.banner-link:hover img {
-    border-color: var(--primary);
-}
-
-
 /* Optional: Add a subtle glow effect on hover */
 .banner-link:hover img {
     filter: brightness(1.05);
     transition: filter var(--transition);
+}
+
+
+
+.banner-link:hover img {
+    border-color: var(--primary);
 }
 
 
