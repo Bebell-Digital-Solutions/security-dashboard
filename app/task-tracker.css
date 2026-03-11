@@ -1,0 +1,141 @@
+
+
+
+
+/* =========================================
+   TASK TRACKER NOTIFICATIONS
+   ========================================= */
+.task-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: 350px;
+    background: var(--bg-card);
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,80,17,0.3);
+    z-index: 10001;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    font-family: var(--font-code);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+}
+
+.task-notification.show {
+    transform: translateX(0);
+}
+
+.task-notification-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.task-notification-icon {
+    width: 30px;
+    height: 30px;
+    background: var(--gradient-1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-dark);
+    font-weight: bold;
+}
+
+.task-notification-title {
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.task-notification-section {
+    color: var(--primary);
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.task-notification-description {
+    color: var(--text-main);
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.task-notification-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.task-progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.task-progress-fill {
+    height: 100%;
+    background: var(--gradient-1);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.task-progress-text {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    min-width: 45px;
+}
+
+.task-notification-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 4px;
+    line-height: 1;
+}
+
+.task-notification-close:hover {
+    color: var(--primary);
+}
+
+.task-complete-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--success) 0%, #40c057 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-family: var(--font-code);
+    font-weight: 600;
+    z-index: 10002;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(81, 207, 102, 0.4);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-complete-toast.show {
+    transform: translateX(0);
+}
+
+.task-complete-toast i {
+    font-size: 1.2rem;
+}
