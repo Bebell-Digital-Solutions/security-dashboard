@@ -272,13 +272,13 @@
 
 
 
-
 /* Full border glow effect on hover */
 .banner-container {
     position: relative;
     margin-bottom: 30px;
     border-radius: 12px;
     background: transparent;
+border: 1px solid var(--primary);
 }
 
 .banner-link {
@@ -315,7 +315,6 @@
 .banner-link:hover img {
     box-shadow: var(--shadow-glow);
 }
-
 
 
 
