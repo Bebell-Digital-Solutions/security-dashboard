@@ -272,13 +272,11 @@
 
 
 
-/* Full border glow effect on hover */
+/* Animated border on hover */
 .banner-container {
     position: relative;
     margin-bottom: 30px;
     border-radius: 12px;
-    background: transparent;
-border: 1px solid var(--primary);
 }
 
 .banner-link {
@@ -288,39 +286,36 @@ border: 1px solid var(--primary);
     border-radius: 12px;
 }
 
+.banner-link img {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 .banner-link::before {
     content: '';
     position: absolute;
-    inset: 0;
-    padding: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary), transparent);
-    border-radius: 12px;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--primary), transparent 40%, transparent 60%, var(--primary));
+    border-radius: 14px;
     opacity: 0;
-    transition: var(--transition);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+    transition: opacity var(--transition);
+    z-index: -1;
 }
 
 .banner-link:hover::before {
-    opacity: 1;
-}
-
-.banner-link img {
-    border-radius: 12px;
-    transition: transform var(--transition), box-shadow var(--transition);
+    opacity: 0.5;
 }
 
 .banner-link:hover img {
-    box-shadow: var(--shadow-glow);
+    border-color: var(--primary);
 }
-
-
-
-
-
-
 
 
 
