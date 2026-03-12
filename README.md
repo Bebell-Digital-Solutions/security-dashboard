@@ -5,7 +5,7 @@
 <img src="resources/images/sentinel-main-banner.png" alt="Sentinel Banner" width="100%" style="max-width:1200px; border-radius:10px;">
   
   <!-- LOGO / ICON -->
-  <img src="https://via.placeholder.com/120x120/1b1a23/ff5011?text=🛡️" alt="Sentinel Logo" width="120" style="border-radius:50%; margin-top:-40px; border:3px solid #ff5011;">
+  <img src="https://bucket.mlcdn.com/a/3336/3336910/images/00ad6c905c77b9a5bbe1075e94bab404d845aa66.png" alt="Sentinel Logo" width="120" style="border-radius:50%; margin-top:-40px; border:3px solid #ff5011;">
   
   <h1 style="font-family: 'Orbitron', sans-serif; color: #ff5011; font-size: 3rem; margin: 10px 0;">
     SENTINEL
