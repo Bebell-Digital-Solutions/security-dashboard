@@ -1,7 +1,7 @@
 <div align="center">
   
   <!-- HERO BANNER PLACEHOLDER -->
-  <img src="https://via.placeholder.com/1200x300/0d0d0d/ff5011?text=SENTINEL+PRIVACY+GUIDE" alt="Sentinel Banner" width="100%" style="max-width:1000px; border-radius:10px;">
+  <img src="[https://via.placeholder.com/1200x300/0d0d0d/ff5011?text=SENTINEL+PRIVACY+GUIDE](https://bucket.mlcdn.com/a/3336/3336910/images/d16c1e9d7382f9c7aa9d772edf7572c43c48785a.png)" alt="Sentinel Banner" width="100%" style="max-width:1200px; border-radius:10px;">
   
   <!-- LOGO / ICON -->
   <img src="https://via.placeholder.com/120x120/1b1a23/ff5011?text=🛡️" alt="Sentinel Logo" width="120" style="border-radius:50%; margin-top:-40px; border:3px solid #ff5011;">
