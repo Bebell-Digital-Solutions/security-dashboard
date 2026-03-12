@@ -2,7 +2,7 @@
   
   <!-- HERO BANNER PLACEHOLDER -->
 <!-- HERO BANNER PLACEHOLDER -->
-<img src="resources/images/banner.png" alt="Sentinel Banner" width="100%" style="max-width:1200px; border-radius:10px;">
+<img src="resources/images/sentinel-banner.png" alt="Sentinel Banner" width="100%" style="max-width:1200px; border-radius:10px;">
   
   <!-- LOGO / ICON -->
   <img src="https://via.placeholder.com/120x120/1b1a23/ff5011?text=🛡️" alt="Sentinel Logo" width="120" style="border-radius:50%; margin-top:-40px; border:3px solid #ff5011;">
