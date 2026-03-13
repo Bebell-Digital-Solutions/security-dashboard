@@ -60,7 +60,26 @@
         allowfullscreen>
     </iframe>
 </div>
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('youtube-container');
+    const thumbnail = document.getElementById('video-thumbnail');
+    const youtubeIframe = document.getElementById('youtube-video');
+    
+    thumbnail.addEventListener('click', function() {
+        // Hide thumbnail
+        thumbnail.style.display = 'none';
+        
+        // Show and play YouTube video
+        youtubeIframe.classList.remove('hidden');
+        
+        // If you want to ensure autoplay works, you can reload the src with autoplay parameter
+        // This is helpful for browsers that block autoplay
+        const videoSrc = youtubeIframe.src;
+        youtubeIframe.src = videoSrc; // Reloads with autoplay
+    });
+});
+</script>
 
 
 
