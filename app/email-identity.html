@@ -17,6 +17,45 @@
 </div>
 
 
+ <!-- VIDEO CONTAINER (Responsive 1920x1080px ratio) -->
+    <div class="w-full aspect-video bg-black rounded-2xl shadow-lg mb-8 overflow-hidden relative" id="video-container">
+        <!-- Video Thumbnail -->
+        <div id="video-thumbnail" class="absolute inset-0 w-full h-full flex items-center justify-center cursor-pointer bg-cover bg-center z-10">
+            <!-- Add your thumbnail image URL here -->
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <img src="https://cdn.shopify.com/s/files/1/0242/0175/6777/files/52.gif?v=1773380159" 
+                 alt="Video thumbnail" 
+                 class="absolute inset-0 w-full h-full object-cover">
+            
+            
+            <!-- Play Button with White Background ONLY Behind the Triangle -->
+            <div class="relative z-20 hover:scale-110 transition-all duration-300">
+                <!-- White circle positioned behind just the play triangle -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="bg-white h-10 w-10 rounded-full"></div>
+                </div>
+                
+                <!-- Play Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 relative z-10" viewBox="0 0 20 20" fill="#ff5011">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            
+            <!-- Optional: Video title overlay -->
+            <div class="absolute bottom-6 left-6 z-20 text-white">
+                <h4 class="text-xl font-bold">Security Overview</h4>
+                <p class="text-white/80">Click to play</p>
+            </div>
+        </div>
+        
+        <!-- Video Element (Hidden by default) -->
+        <video id="overview-video" controls class="w-full h-full object-cover hidden">
+            <!-- Placeholder Video Source (Replace with your actual video file path) -->
+            <source src="https://cdn.shopify.com/videos/c/o/v/a9fe271f1ea34fb68198e50a30f2a1c9.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
 
 
 
