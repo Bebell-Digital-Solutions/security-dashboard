@@ -1842,6 +1842,49 @@ input[type="checkbox"]:disabled:checked::after { color: #111; }
         });
     </script>
 
+
+
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const thumbnail = document.getElementById('video-thumbnail');
+    const youtubeIframe = document.getElementById('youtube-video');
+    
+    // Initially hide the iframe (using CSS instead of hidden class for better control)
+    youtubeIframe.style.display = 'none';
+    
+    thumbnail.addEventListener('click', function() {
+        // Hide thumbnail
+        thumbnail.style.display = 'none';
+        
+        // Show YouTube iframe
+        youtubeIframe.style.display = 'block';
+        
+        // Get the base URL without any parameters
+        const baseSrc = youtubeIframe.src.split('?')[0];
+        
+        // Set new src with autoplay parameter to force reload and play
+        youtubeIframe.src = baseSrc + '?autoplay=1&enablejsapi=1';
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
     
